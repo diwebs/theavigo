@@ -1,0 +1,366 @@
+{
+  "siteSettings": {
+    "companyName": "Avigo Oil and Gas Integrated Ltd.",
+    "shortName": "AVIGO",
+    "tagline": "Powering Progress, Globally Integrated.",
+    "logoUrl": "/uploads/logo.png",
+    "footerLogoUrl": "/uploads/logo-footer-green.jpg",
+    "colors": {
+      "primaryGreen": "#76B843",
+      "deepTeal": "#0B5D69",
+      "forestGreen": "#16794B",
+      "navyAccent": "#3B3E79",
+      "amberAccent": "#F5C431"
+    },
+    "navigation": [
+      {
+        "id": "nav-home",
+        "label": "Home",
+        "target": "/",
+        "page": "home",
+        "visible": true,
+        "subItems": [
+          { "label": "Corporate Hero", "target": "/#hero" },
+          { "label": "Executive Overview", "target": "/#home-overview" },
+          { "label": "Major Services", "target": "/#major-services" }
+        ]
+      },
+      {
+        "id": "nav-about",
+        "label": "About Us",
+        "target": "/about",
+        "page": "about",
+        "visible": true,
+        "subItems": [
+          { "label": "Introduction", "target": "/about#introduction" },
+          { "label": "Our Vision & Mission", "target": "/about#vision-mission" },
+          { "label": "Organization Structure", "target": "/about#organization-structure" },
+          { "label": "Our Commitment", "target": "/about#our-commitment" },
+          { "label": "Our People", "target": "/about#our-people" }
+        ]
+      },
+      {
+        "id": "nav-services",
+        "label": "Services",
+        "target": "/services",
+        "page": "services",
+        "visible": true,
+        "subItems": [
+          { "label": "Major Services Overview", "target": "/services#major-services" },
+          { "label": "Global Expertise Across Sectors", "target": "/services#global-expertise" },
+          { "label": "Expanding Global Footprint", "target": "/services#expanding-footprint" }
+        ]
+      },
+      {
+        "id": "nav-contact",
+        "label": "Contact Us",
+        "target": "/contact",
+        "page": "contact",
+        "visible": true,
+        "subItems": [
+          { "label": "Corporate Inquiry & Quote", "target": "/contact#inquiry-section" },
+          { "label": "Abuja & Port Harcourt Offices", "target": "/contact#contact" }
+        ]
+      }
+    ],
+    "sectionsOrder": [
+      { "id": "hero", "title": "Cover & Modern Hero Showcase", "page": "home", "visible": true },
+      { "id": "introduction", "title": "Introduction, Vision & Mission", "page": "about", "visible": true },
+      { "id": "major-services", "title": "Our Major Services Overview", "page": "services", "visible": true },
+      { "id": "global-expertise", "title": "Global Expertise Across Diverse Sectors", "page": "services", "visible": true },
+      { "id": "expanding-footprint", "title": "Expanding Our Global Footprint", "page": "services", "visible": true },
+      { "id": "organization-structure", "title": "Organization Structure", "page": "about", "visible": true },
+      { "id": "our-commitment", "title": "Our Commitment", "page": "about", "visible": true },
+      { "id": "our-people", "title": "Our People", "page": "about", "visible": true },
+      { "id": "contact", "title": "Corporate Contact & Locations", "page": "contact", "visible": true }
+    ]
+  },
+  "hero": {
+    "word1": "Powering",
+    "word2": "Progress,",
+    "word3": "Globally",
+    "word4": "Integrated.",
+    "profileLabel": "CORPORATE PROFILE",
+    "subtitle": "Delivering comprehensive solutions across oil and gas, advanced logistics, complex engineering, sustainable environmental management, and robust construction worldwide.",
+    "heroImage": "/uploads/page01-hero-pipeline.jpg",
+    "secondaryHeroImage": "/uploads/page02-gas-manifold.jpg",
+    "tertiaryHeroImage": "/uploads/page08-petrochemical-plant.jpg",
+    "pillars": [
+      {
+        "title": "Energy Solutions (Oil and Gas)",
+        "summary": "Upstream, midstream, downstream & international petroleum trading",
+        "target": "/services#global-expertise"
+      },
+      {
+        "title": "Logistics & Supply Chain",
+        "summary": "Global transportation, marine vessel support & heavy equipment leasing",
+        "target": "/services#global-expertise"
+      },
+      {
+        "title": "Advanced Engineering",
+        "summary": "Electrical systems, civil infrastructure, pipelines & marine construction",
+        "target": "/services#global-expertise"
+      },
+      {
+        "title": "Environmental Stewardship",
+        "summary": "Waste management, land reclamation, shoreline & oil spill response",
+        "target": "/services#global-expertise"
+      }
+    ]
+  },
+  "introduction": {
+    "title": "Introduction",
+    "body": "Avigo Oil and Gas Integrated Ltd. is a dynamic and strategically diversified corporation, established under the Companies and Allied Matters Act of 2020 and headquartered in Nigeria. With a foundational strength in the energy sector, Avigo Oil and Gas Integrated Ltd. has evolved into a globally-minded integrated service provider, delivering comprehensive solutions across oil and gas, advanced logistics, complex engineering, sustainable environmental management, and robust construction. As a privately held limited liability company, we are driven by a commitment to operational excellence, technological innovation, and sustainable development, aiming to create lasting value for our stakeholders worldwide.",
+    "bannerImage": "/uploads/page03-intro-banner.jpg",
+    "visionTitle": "Our Vision",
+    "visionBody": "To be a globally recognized leader in integrated services, renowned for our unwavering commitment to quality, safety, innovation, and sustainable practices, contributing to progress and development across diverse industries and geographies.",
+    "missionTitle": "Our Mission",
+    "missionBody": "To empower our clients globally with exceptional value through a comprehensive and seamlessly integrated suite of services. We achieve this by fostering a culture of expertise, leveraging cutting-edge technologies, adhering to the highest international standards, and maintaining a steadfast dedication to environmentally and socially responsible operations."
+  },
+  "majorServicesOverview": {
+    "taglineLeft": "PRECISION",
+    "taglineCenter": "&",
+    "taglineRight": "QUALITY",
+    "mainHeading": "OUR MAJOR SERVICES",
+    "majorServices": [
+      "Energy Solutions (Oil and Gas)",
+      "Logistics and Supply Chain Optimization",
+      "Advanced Engineering and Technical Infrastructure",
+      "Environmental Stewardship and Waste Management"
+    ],
+    "subHeading": "Expanding Our Global Footprint and Service Portfolio",
+    "expansionServices": [
+      "Mining and Resources",
+      "Civil Engineering and Infrastructure Development",
+      "Sustainable Water Solutions (Borehole Drilling)",
+      "Real Estate Development",
+      "Transportation Infrastructure (Road Construction)",
+      "Electrical Engineering Solutions",
+      "Project Management and Consultancy",
+      "General Contracts and Procurement"
+    ],
+    "backgroundImage": "/uploads/page06-logistics-cranes.jpg"
+  },
+  "coreServices": {
+    "sectionTitle": "Global Expertise Across Diverse Sectors",
+    "leadText": "Avigo Oil and Gas Integrated Ltd. operates at the intersection of critical global industries, offering specialized and interconnected services:",
+    "items": [
+      {
+        "id": "core-1",
+        "title": "Energy Solutions (Oil and Gas):",
+        "description": "We are at the forefront of the oil and gas sector, providing comprehensive services encompassing upstream, midstream, and downstream operations. Our global capabilities include marine logistics, onshore and offshore oil and gas services, advanced oil tools and technologies, and the international trading of a diverse portfolio of petroleum products, including industrial, technical, chemical, domestic, and liquefied petroleum gas (LPG). We are committed to supporting global energy demands with efficiency and environmental responsibility.",
+        "primaryImage": "/uploads/page05-energy-gauge.jpg",
+        "secondaryImages": []
+      },
+      {
+        "id": "core-2",
+        "title": "Logistics and Supply Chain Optimization:",
+        "description": "We offer end-to-end international logistics solutions, optimizing supply chains for efficiency and resilience. Our services include global transportation management, specialized vehicle logistics, international procurement and distribution of machinery and spare parts, heavy equipment leasing and management, and comprehensive marine vessel support services, ensuring seamless movement of goods and resources across continents.",
+        "primaryImage": "/uploads/page06-logistics-cranes.jpg",
+        "secondaryImages": []
+      },
+      {
+        "id": "core-3",
+        "title": "Advanced Engineering and Technical Infrastructure:",
+        "description": "Our engineering division provides world-class expertise in electrical and electronics systems, encompassing design, installation, and maintenance for diverse applications globally. We also excel in complex building construction, infrastructure repair and rehabilitation, advanced civil engineering works, specialized mechanical services, pipeline construction and maintenance, dredging and marine construction, well intervention services, fabrication of critical infrastructure, and the sourcing of high-quality construction materials to meet international standards.",
+        "primaryImage": "/uploads/page06-engineering-blueprint.jpg",
+        "secondaryImages": []
+      },
+      {
+        "id": "core-4",
+        "title": "Environmental Stewardship and Waste Management:",
+        "description": "Avigo Oil and Gas Integrated Ltd. is deeply committed to global environmental sustainability. We offer comprehensive and environmentally sound waste management solutions, including hazardous and non-hazardous waste disposal, environmental logistics, and control services. Our expertise extends to international standards in fumigation and pest control, remediation of agricultural waste, land reclamation, erosion control, shoreline protection, pollution mitigation, and oil spill response, contributing to a healthier planet.",
+        "primaryImage": "/uploads/page07-construction-desk.jpg",
+        "secondaryImages": [
+          "/uploads/page07-oilfield-drilling.jpg",
+          "/uploads/page07-solar-wind.jpg"
+        ]
+      }
+    ]
+  },
+  "expansionPortfolio": {
+    "sectionTitle": "Expanding Our Global Footprint and Service Portfolio",
+    "leadText": "Building on our core strengths, Avigo Oil and Gas Integrated Ltd. is strategically expanding its global presence and service offerings in the following vital sectors:",
+    "page8BannerImage": "/uploads/page08-petrochemical-plant.jpg",
+    "page9CornerImage": "/uploads/page09-field-tablet.jpg",
+    "items": [
+      {
+        "id": "exp-1",
+        "layout": "featured-wide",
+        "headerStyle": "outline-green",
+        "title": "Mining and Resources:",
+        "description": "We possess the technical expertise and operational capacity to undertake international mining projects, adhering to the highest global safety and environmental benchmarks, contributing to the sustainable extraction and management of natural resources."
+      },
+      {
+        "id": "exp-2",
+        "layout": "featured-wide",
+        "headerStyle": "outline-green",
+        "title": "Civil Engineering and Infrastructure Development:",
+        "description": "Our civil engineering and construction division undertakes large-scale international infrastructure projects, including transportation networks, water management systems, and public works, driving economic growth and improving quality of life globally."
+      },
+      {
+        "id": "exp-3",
+        "layout": "grid-card",
+        "headerStyle": "deep-teal",
+        "title": "Sustainable Water Solutions (Borehole Drilling):",
+        "description": "We provide advanced and sustainable borehole drilling services internationally, ensuring access to clean and reliable water resources for communities and industries worldwide."
+      },
+      {
+        "id": "exp-4",
+        "layout": "grid-card",
+        "headerStyle": "sage-light",
+        "title": "Real Estate Development:",
+        "description": "Avigo Oil and Gas Integrated Ltd. engages in the planning, development, and management of international residential and commercial real estate projects, creating sustainable and thriving communities."
+      },
+      {
+        "id": "exp-5",
+        "layout": "grid-card",
+        "headerStyle": "sage-light",
+        "title": "Transportation Infrastructure (Road Construction):",
+        "description": "We undertake international road construction and rehabilitation projects, building vital transportation links that facilitate trade, connectivity, and economic development across nations."
+      },
+      {
+        "id": "exp-6",
+        "layout": "grid-card",
+        "headerStyle": "forest-green",
+        "title": "Electrical Engineering Solutions:",
+        "description": "Our electrical engineering division offers comprehensive services for power generation, transmission, and distribution projects globally, supporting energy infrastructure development and access."
+      },
+      {
+        "id": "exp-7",
+        "layout": "grid-card",
+        "headerStyle": "lime-green",
+        "title": "Project Management and Consultancy:",
+        "description": "We provide expert project management services and consultancy across all our sectors of operation, ensuring efficient delivery, risk mitigation, and successful outcomes for international projects of any scale."
+      },
+      {
+        "id": "exp-8",
+        "layout": "grid-card",
+        "headerStyle": "deep-teal",
+        "title": "General Contracts and Procurement:",
+        "description": "Avigo Oil and Gas Integrated Ltd. serves as a trusted partner for international general contracts and procurement services, leveraging our global network and expertise to deliver comprehensive and cost-effective solutions."
+      }
+    ]
+  },
+  "organizationStructure": {
+    "sectionTitle": "Organization Structure",
+    "bannerImage": "/uploads/page10-corporate-towers.jpg",
+    "originalChartImage": "/uploads/page10-org-chart-original.png",
+    "displayMode": "interactive",
+    "nodes": [
+      { "id": "bod", "title": "Board of Directors", "parentId": null, "nodeType": "blue-oval", "branch": "governance" },
+      { "id": "auditor", "title": "Auditor", "parentId": "bod", "nodeType": "blue-red-split", "branch": "governance-side" },
+      { "id": "ceo", "title": "CEO", "parentId": "bod", "nodeType": "blue-circle", "branch": "governance" },
+      { "id": "qhse", "title": "QHSE/Compliance Coordinator", "parentId": "ceo", "nodeType": "red-box", "branch": "governance-side" },
+
+      { "id": "hr-admin", "title": "HR/Admin Manager", "parentId": "ceo", "nodeType": "red-box", "branch": "hr" },
+      { "id": "chief-accountant", "title": "Chief Accountant", "parentId": "ceo", "nodeType": "red-box", "branch": "finance" },
+      { "id": "legal-adviser", "title": "Legal Adviser", "parentId": "ceo", "nodeType": "red-box", "branch": "legal" },
+      { "id": "ops-manager", "title": "Operations Manager", "parentId": "ceo", "nodeType": "red-box", "branch": "operations" },
+      { "id": "biz-dev", "title": "Business Development", "parentId": "ceo", "nodeType": "red-box", "branch": "bizdev" },
+
+      { "id": "crewing-officer", "title": "Crewing Officer", "parentId": "hr-admin", "nodeType": "red-box", "branch": "hr-crewing" },
+      { "id": "vessel-crew", "title": "Vessel Crew", "parentId": "crewing-officer", "nodeType": "red-box", "branch": "hr-crewing" },
+      { "id": "sec-front-desk", "title": "Sec/Front Desk", "parentId": "hr-admin", "nodeType": "red-box", "branch": "hr-support" },
+      { "id": "office-admin-asst", "title": "Office/Admin Assistant", "parentId": "hr-admin", "nodeType": "red-box", "branch": "hr-support" },
+      { "id": "drivers", "title": "Drivers", "parentId": "hr-admin", "nodeType": "red-box", "branch": "hr-support" },
+
+      { "id": "supply-chain", "title": "Supply Chain Coordinator", "parentId": "ops-manager", "nodeType": "red-box", "branch": "ops-supply" },
+      { "id": "logistics-officer", "title": "Logistics Officer", "parentId": "supply-chain", "nodeType": "red-box", "branch": "ops-supply" },
+      { "id": "procurement-officer", "title": "Procurement Officer", "parentId": "supply-chain", "nodeType": "red-box", "branch": "ops-supply" },
+
+      { "id": "port-captain", "title": "Port Captain", "parentId": "ops-manager", "nodeType": "red-box", "branch": "ops-marine" },
+      { "id": "ops-assistants", "title": "OPS Assistants", "parentId": "port-captain", "nodeType": "red-box", "branch": "ops-marine" },
+
+      { "id": "tech-superintendent", "title": "Technical Superintende", "parentId": "ops-manager", "nodeType": "red-box", "branch": "ops-technical" },
+      { "id": "mechanics", "title": "Mechanics", "parentId": "tech-superintendent", "nodeType": "red-box", "branch": "ops-technical" },
+      { "id": "electricians", "title": "Electricians", "parentId": "tech-superintendent", "nodeType": "red-box", "branch": "ops-technical" },
+      { "id": "welders", "title": "Welders", "parentId": "tech-superintendent", "nodeType": "red-box", "branch": "ops-technical" },
+      { "id": "technicians", "title": "Technicians", "parentId": "tech-superintendent", "nodeType": "red-box", "branch": "ops-technical" }
+    ]
+  },
+  "commitments": {
+    "sectionTitle": "Our Commitment",
+    "leadText": "At Avigo Oil and Gas Integrated Ltd., our global operations are guided by an unwavering commitment to:",
+    "items": [
+      {
+        "id": "comm-1",
+        "title": "Quality Standards:",
+        "description": "Delivering services and products that meet and exceed the highest international quality benchmarks."
+      },
+      {
+        "id": "comm-2",
+        "title": "Safety Leadership:",
+        "description": "Prioritizing the health and safety of our workforce, partners, and the communities in which we operate, adhering to stringent international safety protocols."
+      },
+      {
+        "id": "comm-3",
+        "title": "Ethical Integrity:",
+        "description": "Conducting all our business activities with the utmost ethical standards, transparency, and accountability across all our international engagements."
+      },
+      {
+        "id": "comm-4",
+        "title": "Innovation and Technology:",
+        "description": "Continuously investing in and deploying cutting-edge technologies and innovative solutions to enhance efficiency, sustainability, and client value on a global scale."
+      },
+      {
+        "id": "comm-5",
+        "title": "Client Partnership:",
+        "description": "Building strong, collaborative, and enduring relationships with our international clients, understanding their unique needs and exceeding their expectations through tailored and responsive solutions."
+      }
+    ],
+    "pillars": [
+      {
+        "id": "pillar-1",
+        "title": "Sustainability and Responsibility",
+        "description": ": Integrating environmental and social considerations into all aspects of our global operations, contributing to sustainable development and responsible resource management worldwide."
+      },
+      {
+        "id": "pillar-2",
+        "title": "Legal and Financial Framework",
+        "description": "Avigo Oil and Gas Integrated Ltd. is registered in Nigeria as a private company limited by shares, with a foundational capital structure that supports our expanding global operations and investments."
+      }
+    ]
+  },
+  "people": {
+    "topHighlightPrefix": "Our ",
+    "topHighlightGreen": "experienced handymen and installation specialists",
+    "topHighlightSuffix": " service all areas of construction.",
+    "sectionTitle": "Our People",
+    "paragraphs": [
+      "we are a company that prides itself on its 'family' culture and we seek out high-calibre people. We are a company that has, at its core, a team philosophy that is clearly apparent each and every day – there is a real sense of being there for one another.",
+      "we believe in nurturing the skills of our team members and providing growing levels of responsibility of all the things that we do and all the exciting projects that we undertakes on a daily basis, it's our people who are the foundation of our success.",
+      "Our people bring unique skills, energy, expertise, experience and perspectives to our workforce. Find out more about working in one of Nigeria's leading contracting project development company and meet some of the people in our team."
+    ],
+    "bottomCallout": "with over 30 specialized contractors and professionals we provide a complete one stop solution for all construction works, small or large.",
+    "leftImage": "/uploads/page12-people-specialist.jpg",
+    "rightImage": "/uploads/page12-people-grating.jpg"
+  },
+  "contact": {
+    "bannerImage": "/uploads/page13-storage-vessel.jpg",
+    "abujaTitle": "ABUJA ADDRESS:",
+    "abujaLines": [
+      "New Amana Suite 6,",
+      "No. 30, Sokode Crescent,",
+      "off Micheal Opara Street, Zone 5,",
+      "Abuja Nigeria."
+    ],
+    "phTitle": "PH ADDRESS:",
+    "phLines": [
+      "Block 8,212,Ikwere Road off",
+      "UST Roundabout,",
+      "Port Harcourt, Rivers State."
+    ],
+    "phones": [
+      "+2349069655238",
+      "+2348039936593",
+      "+2348131188891"
+    ],
+    "website": "www.theavigo.com",
+    "emails": [
+      "info@theavigo.com",
+      "theavigolimited@gmail.com"
+    ]
+  },
+  "customBlocks": []
+}

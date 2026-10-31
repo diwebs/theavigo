@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Avigo Oil and Gas Integrated Ltd. | Admin Management Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <!-- PROTECTED AVIGO ADMIN AUTHENTICATION GATE -->
+  <div id="login-screen" class="avigo-auth-gate">
+    <div class="avigo-auth-card">
+      <div class="avigo-auth-header">
+        <img src="/uploads/logo.png" alt="Avigo Oil and Gas Integrated Ltd." class="avigo-auth-logo" />
+        <span class="avigo-security-badge">RESTRICTED CORPORATE ACCESS</span>
+        <h1>Avigo Admin Portal</h1>
+        <p>Authenticate to manage Avigo Oil and Gas Integrated Ltd. pages, services, organization structure, and inquiries.</p>
+      </div>
+      <form id="login-form" class="avigo-auth-form">
+        <div class="form-group">
+          <label for="login-username">Admin Username</label>
+          <input type="text" id="login-username" required autocomplete="username" placeholder="Enter admin username" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Admin Password</label>
+          <input type="password" id="login-password" required autocomplete="current-password" placeholder="Enter admin password" />
+        </div>
+        <div id="login-error" class="login-error" style="display:none;"></div>
+        <button type="submit" class="btn-avigo-primary btn-full">Authenticate &amp; Enter Portal</button>
+      </form>
+      <div class="avigo-auth-footer">
+        <span>Avigo Oil and Gas Integrated Ltd.</span>
+        <a href="/">Return to Public Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVIGO ADMIN MANAGEMENT SHELL -->
+  <div id="admin-app" class="avigo-admin-shell" style="display:none;">
+    <!-- Top Executive Command Header -->
+    <header class="avigo-topbar">
+      <div class="avigo-topbar-left">
+        <button type="button" id="admin-mobile-sidebar-btn" class="avigo-icon-btn" aria-label="Toggle Admin Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <div class="avigo-brand-badge">
+          <img src="/uploads/logo.png" alt="Avigo" class="avigo-topbar-logo" />
+          <div>
+            <div class="avigo-topbar-title">AVIGO ADMIN PORTAL</div>
+            <div class="avigo-topbar-sub">Integrated Content &amp; Portfolio Management System</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="avigo-topbar-center">
+        <a href="/" target="_blank" class="avigo-page-chip">Home (/)</a>
+        <a href="/about" target="_blank" class="avigo-page-chip">About Us (/about)</a>
+        <a href="/services" target="_blank" class="avigo-page-chip">Services (/services)</a>
+        <a href="/contact" target="_blank" class="avigo-page-chip">Contact (/contact)</a>
+      </div>
+
+      <div class="avigo-topbar-right">
+        <span id="unsaved-indicator" class="unsaved-badge" style="display:none;">Unpublished Edits</span>
+        <button type="button" id="toggle-preview-btn" class="btn-avigo-ghost">Live Studio Preview</button>
+        <button type="button" id="publish-all-btn" class="btn-avigo-publish">Publish to Website</button>
+        <button type="button" id="logout-btn" class="btn-avigo-ghost">Sign Out</button>
+      </div>
+    </header>
+
+    <div class="avigo-body">
+      <!-- Left Navigation Sidebar -->
+      <aside id="avigo-sidebar" class="avigo-sidebar">
+        <nav class="avigo-sidebar-nav">
+          <div class="avigo-nav-section">Executive Command</div>
+          <button type="button" class="avigo-nav-btn active" data-tab="tab-dashboard">Command Center</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-inquiries">
+            <span>Client Inquiries</span>
+            <span id="nav-inquiry-badge" class="nav-count-pill">1</span>
+          </button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-sections">Page Structure &amp; Menus</button>
+
+          <div class="avigo-nav-section">Home Page Sections</div>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-hero">Cover &amp; Hero Showcase</button>
+
+          <div class="avigo-nav-section">About Us Page (/about)</div>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-intro">Intro, Vision &amp; Mission</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-org">Organization Structure</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-commitments">Our Commitments</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-people">Our People</button>
+
+          <div class="avigo-nav-section">Services Page (/services)</div>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-major-services">Major Services Summary</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-services">Core Divisions</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-expansion">Global Portfolio</button>
+
+          <div class="avigo-nav-section">Contact Page (/contact)</div>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-contact">Offices, Phones &amp; Emails</button>
+
+          <div class="avigo-nav-section">Assets &amp; System</div>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-custom">Custom Sections Builder</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-media">Avigo Media Vault</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-appearance">Brand Identity &amp; Colors</button>
+          <button type="button" class="avigo-nav-btn" data-tab="tab-revisions">Revisions &amp; Security</button>
+        </nav>
+      </aside>
+
+      <!-- Main Editor Workspace & Multi-Device Live Preview Studio -->
+      <div class="avigo-workspace">
+        <main id="avigo-editor-pane" class="avigo-editor-pane">
+          <!-- Populated dynamically by /js/admin.js -->
+        </main>
+
+        <section id="avigo-preview-pane" class="avigo-preview-pane" style="display:none;">
+          <div class="preview-toolbar">
+            <div class="preview-route-group">
+              <label for="preview-route-select">Page:</label>
+              <select id="preview-route-select">
+                <option value="/">Home (/)</option>
+                <option value="/about">About Us (/about)</option>
+                <option value="/services">Services (/services)</option>
+                <option value="/contact">Contact Us (/contact)</option>
+              </select>
+            </div>
+            <div class="preview-device-group">
+              <button type="button" class="device-btn active" data-device-width="100%">Desktop</button>
+              <button type="button" class="device-btn" data-device-width="768px">Tablet</button>
+              <button type="button" class="device-btn" data-device-width="390px">Mobile</button>
+            </div>
+          </div>
+          <div class="preview-stage">
+            <iframe id="live-preview-iframe" src="/" title="Avigo Live Website Preview"></iframe>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVIGO MEDIA VAULT MODAL -->
+  <div id="media-modal" class="media-modal" style="display:none;">
+    <div class="media-modal-dialog">
+      <div class="media-modal-header">
+        <h3>Avigo Media Vault — Select or Upload Asset</h3>
+        <button type="button" id="close-media-modal" class="btn-close-modal">Close</button>
+      </div>
+      <div class="media-modal-body">
+        <div class="media-upload-bar">
+          <label class="btn-avigo-secondary" style="cursor:pointer;">
+            <span>Upload New Image from Device</span>
+            <input type="file" id="modal-file-input" accept="image/*" style="display:none;" />
+          </label>
+          <span class="help-text">Choose an extracted corporate profile photograph below or upload a new image</span>
+        </div>
+        <div id="modal-media-grid" class="media-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="cms-toast" class="cms-toast" style="display:none;"></div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
+
