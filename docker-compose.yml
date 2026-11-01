@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  theavigo-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: avigo_corporate_portal
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - AVIGO_PORTAL_PATH=/avigo-portal
+    volumes:
+      - ./data:/app/data
+      - ./public/uploads:/app/public/uploads
+

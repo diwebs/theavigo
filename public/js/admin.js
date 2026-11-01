@@ -141,13 +141,18 @@
 
   function renderImageFieldHtml(id, label, currentValue) {
     return `
-      <div class="form-group">
-        <label>${escapeHtml(label)}</label>
-        <div class="image-field-row">
+      <div class="image-field-card">
+        <div class="image-field-thumb-wrap">
           <img id="thumb-${escapeHtml(id)}" src="${escapeHtml(currentValue || '/uploads/logo.png')}" alt="Preview" class="image-field-thumb" />
-          <div class="image-field-controls">
-            <input type="text" id="input-${escapeHtml(id)}" value="${escapeHtml(currentValue || '')}" data-img-input="${escapeHtml(id)}" />
-            <button type="button" class="btn-secondary" data-browse-media="${escapeHtml(id)}">Avigo Media Vault</button>
+        </div>
+        <div class="image-field-content">
+          <span class="image-field-label">${escapeHtml(label)}</span>
+          <div class="image-field-inputs">
+            <input type="text" id="input-${escapeHtml(id)}" value="${escapeHtml(currentValue || '')}" data-img-input="${escapeHtml(id)}" placeholder="/uploads/..." />
+            <button type="button" class="btn-secondary" data-browse-media="${escapeHtml(id)}">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>Media Vault</span>
+            </button>
           </div>
         </div>
       </div>
@@ -190,11 +195,14 @@
 
     pane.innerHTML = `
       <div class="editor-header">
-        <div>
-          <h2>Avigo Oil and Gas Integrated Ltd. — Executive Command Center</h2>
-          <p>Central management console for all standalone corporate pages, services portfolio, organizational roles, and client inquiries.</p>
+        <div class="editor-header-text">
+          <h2>Executive Command Center</h2>
+          <p>Central management console for Avigo Oil and Gas Integrated Ltd. standalone corporate pages, service divisions, leadership hierarchy, and inquiries.</p>
         </div>
-        <a href="/" target="_blank" class="btn-primary">Launch Public Website</a>
+        <a href="/" target="_blank" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>Launch Public Website</span>
+        </a>
       </div>
 
       <div class="stats-grid">
@@ -208,16 +216,21 @@
         </div>
         <div class="stat-box">
           <div class="stat-num">${orgCount}</div>
-          <div class="stat-label">Organization Hierarchy Nodes</div>
+          <div class="stat-label">Organization Hierarchy Roles</div>
         </div>
         <div class="stat-box">
           <div class="stat-num">${inquiriesList.length}</div>
-          <div class="stat-label">Corporate Client Inquiries</div>
+          <div class="stat-label">Corporate Client Inquiries Received</div>
         </div>
       </div>
 
       <div class="cms-card">
-        <h3>Standalone Corporate Pages Architecture</h3>
+        <div class="cms-card-header">
+          <h3>
+            <span>Standalone Corporate Pages Architecture</span>
+            <span class="card-title-badge">4 STANDALONE ROUTES</span>
+          </h3>
+        </div>
         <div class="form-grid-2">
           <div class="repeater-item">
             <div class="repeater-item-top">
@@ -386,7 +399,12 @@
         </div>
       </div>
       <div class="cms-card">
-        <h3>Cover Headline &amp; Executive Summary</h3>
+        <div class="cms-card-header">
+          <h3>
+            <span>Cover Headline &amp; Executive Summary</span>
+            <span class="card-title-badge">HERO CONTENT</span>
+          </h3>
+        </div>
         <div class="form-grid-2">
           <div class="form-group">
             <label>Headline Word 1 (Light Accent)</label>
@@ -413,9 +431,46 @@
           <label>Hero Executive Summary Subtitle</label>
           <textarea id="hero-subtitle" rows="3">${escapeHtml(h.subtitle || '')}</textarea>
         </div>
+      </div>
+
+      <div class="cms-card">
+        <div class="cms-card-header">
+          <h3>
+            <span>Full-Bleed Background Showcase Slides</span>
+            <span class="card-title-badge">3 ROTATING SLIDES</span>
+          </h3>
+        </div>
+        <p class="field-help" style="margin-bottom:14px;">High-definition visual assets that cycle smoothly with soft opacity in the Hero section.</p>
         ${renderImageFieldHtml('heroImage', 'Primary Showcase Slide (Refinery Pipeline)', h.heroImage)}
         ${renderImageFieldHtml('secondaryHeroImage', 'Secondary Showcase Slide (Gas Manifold Facility)', h.secondaryHeroImage || '/uploads/page02-gas-manifold.jpg')}
         ${renderImageFieldHtml('tertiaryHeroImage', 'Tertiary Showcase Slide (Petrochemical Complex)', h.tertiaryHeroImage || '/uploads/page08-petrochemical-plant.jpg')}
+      </div>
+
+      <div class="cms-card">
+        <div class="cms-card-header">
+          <h3>
+            <span>Hero Base Service Dock (${(h.pillars || []).length} Cards)</span>
+            <span class="card-title-badge">KEY DIVISIONS DOCK</span>
+          </h3>
+        </div>
+        <div class="form-grid-2">
+          ${(h.pillars || []).map((p, pIdx) => `
+            <div class="repeater-item">
+              <div class="form-group">
+                <label>Card Title</label>
+                <input type="text" data-pillar-title="${pIdx}" value="${escapeHtml(p.title || p.label || '')}" />
+              </div>
+              <div class="form-group">
+                <label>Summary / Core Description</label>
+                <textarea data-pillar-summary="${pIdx}" rows="2">${escapeHtml(p.summary || p.value || '')}</textarea>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <label>Link Target</label>
+                <input type="text" data-pillar-target="${pIdx}" value="${escapeHtml(p.target || '/services#global-expertise')}" />
+              </div>
+            </div>
+          `).join('')}
+        </div>
       </div>
     `;
 
@@ -434,6 +489,28 @@
       markUnsaved(true);
     });
     bindImageFields(pane, (id, val) => { h[id] = val; });
+
+    pane.querySelectorAll('[data-pillar-title]').forEach((inp) => {
+      inp.addEventListener('input', () => {
+        const idx = Number(inp.getAttribute('data-pillar-title'));
+        h.pillars[idx].title = inp.value;
+        markUnsaved(true);
+      });
+    });
+    pane.querySelectorAll('[data-pillar-summary]').forEach((inp) => {
+      inp.addEventListener('input', () => {
+        const idx = Number(inp.getAttribute('data-pillar-summary'));
+        h.pillars[idx].summary = inp.value;
+        markUnsaved(true);
+      });
+    });
+    pane.querySelectorAll('[data-pillar-target]').forEach((inp) => {
+      inp.addEventListener('input', () => {
+        const idx = Number(inp.getAttribute('data-pillar-target'));
+        h.pillars[idx].target = inp.value;
+        markUnsaved(true);
+      });
+    });
   }
 
   function renderIntroTab(pane) {
@@ -1362,7 +1439,262 @@
     });
   }
 
+  let adminProfile = {
+    username: 'admin',
+    displayName: 'Executive Administrator',
+    email: 'admin@theavigo.com',
+    role: 'Super Administrator & Portal Lead',
+    phone: '+2349069655238',
+    avatarUrl: '/uploads/logo.png',
+    lastLogin: null
+  };
+
+  async function loadAdminProfile() {
+    try {
+      const res = await apiFetch('/api/auth/profile');
+      adminProfile = Object.assign(adminProfile, res);
+      updateTopbarProfileUi();
+    } catch (e) {
+      console.warn('Could not load profile:', e.message);
+    }
+  }
+
+  function updateTopbarProfileUi() {
+    const nameEl = document.getElementById('topbar-user-name');
+    const roleEl = document.getElementById('topbar-user-role');
+    const avatarEl = document.getElementById('topbar-avatar');
+    if (nameEl) nameEl.textContent = adminProfile.displayName || adminProfile.username;
+    if (roleEl) roleEl.textContent = adminProfile.role || 'Super Admin';
+    if (avatarEl) {
+      if (adminProfile.avatarUrl && (adminProfile.avatarUrl.endsWith('.png') || adminProfile.avatarUrl.endsWith('.jpg') || adminProfile.avatarUrl.endsWith('.jpeg'))) {
+        avatarEl.innerHTML = `<img src="${escapeHtml(adminProfile.avatarUrl)}" alt="Avatar" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" />`;
+      } else {
+        avatarEl.textContent = (adminProfile.displayName || adminProfile.username || 'A')[0].toUpperCase();
+      }
+    }
+  }
+
+  async function renderProfileTab(pane) {
+    await loadAdminProfile();
+    pane.innerHTML = `
+      <div class="editor-header">
+        <div class="editor-header-text">
+          <h2>Admin Profile &amp; Security Governance</h2>
+          <p>Manage your executive administrator credentials, contact information, profile avatar, and account password.</p>
+        </div>
+      </div>
+
+      <div class="profile-executive-grid">
+        <!-- 1. Profile Overview Card -->
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>
+              <span>Executive Profile Information</span>
+              <span class="card-title-badge">PORTAL LEAD</span>
+            </h3>
+          </div>
+          <div class="profile-card-top" style="display:flex;align-items:center;gap:20px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid #EEF2F6;">
+            <div class="profile-avatar-large" style="width:78px;height:78px;border-radius:50%;border:3px solid var(--avigo-green);overflow:hidden;background:#FFFFFF;box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <img id="profile-display-avatar" src="${escapeHtml(adminProfile.avatarUrl || '/uploads/logo.png')}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+            <div>
+              <h3 style="margin-bottom:4px;font-size:1.25rem;">${escapeHtml(adminProfile.displayName)}</h3>
+              <p style="color:var(--avigo-muted);font-size:13px;margin-bottom:6px;">${escapeHtml(adminProfile.role)} &bull; <code>@${escapeHtml(adminProfile.username)}</code></p>
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:rgba(22,121,75,0.12);color:var(--avigo-forest);border-radius:50px;font-size:11px;font-weight:700;">
+                <span class="live-dot"></span> Active &bull; Corporate Super Administrator
+              </span>
+            </div>
+          </div>
+
+          <form id="profile-info-form">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Display Full Name</label>
+                <input type="text" id="prof-display-name" value="${escapeHtml(adminProfile.displayName)}" required />
+              </div>
+              <div class="form-group">
+                <label>Corporate Role / Title</label>
+                <input type="text" id="prof-role" value="${escapeHtml(adminProfile.role)}" required />
+              </div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Corporate Email</label>
+                <input type="email" id="prof-email" value="${escapeHtml(adminProfile.email)}" required />
+              </div>
+              <div class="form-group">
+                <label>Direct Telephone</label>
+                <input type="tel" id="prof-phone" value="${escapeHtml(adminProfile.phone)}" />
+              </div>
+            </div>
+            ${renderImageFieldHtml('adminAvatarUrl', 'Admin Profile Avatar / Photograph', adminProfile.avatarUrl || '/uploads/logo.png')}
+            <button type="submit" class="btn-primary" style="margin-top:6px;">Save Profile Information</button>
+          </form>
+        </div>
+
+        <!-- 2. Security & Password Update Card -->
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>
+              <span>Security &amp; Password Management</span>
+              <span class="card-title-badge">ENCRYPTED PBKDF2</span>
+            </h3>
+          </div>
+          <p class="field-help" style="margin-bottom:18px;">
+            Update your admin login password and username. Passwords must be at least 5 characters.
+          </p>
+
+          <form id="profile-password-form">
+            <div class="form-group">
+              <label>Admin Username</label>
+              <input type="text" id="prof-username" value="${escapeHtml(adminProfile.username)}" required autocomplete="username" />
+              <span class="field-help">Used to log in at ${escapeHtml(adminPortalPath)}</span>
+            </div>
+
+            <div class="form-group">
+              <label>Current Password</label>
+              <div class="input-with-icon" style="position:relative;">
+                <input type="password" id="prof-cur-pass" required placeholder="Enter current password" style="padding-right:40px;" />
+                <button type="button" class="field-action-btn" data-toggle-pass="prof-cur-pass">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>New Password</label>
+                <div class="input-with-icon" style="position:relative;">
+                  <input type="password" id="prof-new-pass" required minlength="5" placeholder="Enter new password" style="padding-right:40px;" />
+                  <button type="button" class="field-action-btn" data-toggle-pass="prof-new-pass">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Confirm New Password</label>
+                <div class="input-with-icon" style="position:relative;">
+                  <input type="password" id="prof-confirm-pass" required minlength="5" placeholder="Re-enter new password" style="padding-right:40px;" />
+                  <button type="button" class="field-action-btn" data-toggle-pass="prof-confirm-pass">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="password-feedback" class="login-error" style="display:none;margin-bottom:14px;"></div>
+
+            <button type="submit" id="btn-update-credentials" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Update Password &amp; Credentials</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- 3. Security Details Card -->
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>
+              <span>Session &amp; Security Specs</span>
+              <span class="card-title-badge">ACTIVE</span>
+            </h3>
+          </div>
+          <div class="form-grid-3" style="font-size:13px;">
+            <div>
+              <strong style="color:var(--avigo-slate);display:block;margin-bottom:4px;">Restricted Route:</strong>
+              <code>${escapeHtml(adminPortalPath)}</code>
+            </div>
+            <div>
+              <strong style="color:var(--avigo-slate);display:block;margin-bottom:4px;">Cryptographic Standard:</strong>
+              <span>PBKDF2 SHA-512 &bull; 12,000 Rounds</span>
+            </div>
+            <div>
+              <strong style="color:var(--avigo-slate);display:block;margin-bottom:4px;">Last Login Registered:</strong>
+              <span>${adminProfile.lastLogin ? new Date(adminProfile.lastLogin).toLocaleString() : 'Current Active Session'}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    bindImageFields(pane, (id, val) => {
+      adminProfile.avatarUrl = val;
+      const disp = document.getElementById('profile-display-avatar');
+      if (disp) disp.src = val;
+    });
+
+    pane.querySelectorAll('[data-toggle-pass]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-toggle-pass');
+        const input = document.getElementById(targetId);
+        if (!input) return;
+        const isPass = input.type === 'password';
+        input.type = isPass ? 'text' : 'password';
+      });
+    });
+
+    document.getElementById('profile-info-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const updated = await apiFetch('/api/auth/profile', {
+          method: 'PUT',
+          body: JSON.stringify({
+            displayName: document.getElementById('prof-display-name').value,
+            role: document.getElementById('prof-role').value,
+            email: document.getElementById('prof-email').value,
+            phone: document.getElementById('prof-phone').value,
+            avatarUrl: adminProfile.avatarUrl
+          })
+        });
+        adminProfile = Object.assign(adminProfile, updated.profile);
+        updateTopbarProfileUi();
+        showToast('Admin profile updated successfully');
+        renderProfileTab(pane);
+      } catch (err) {
+        alert(err.message);
+      }
+    });
+
+    document.getElementById('profile-password-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const curPass = document.getElementById('prof-cur-pass').value;
+      const newPass = document.getElementById('prof-new-pass').value;
+      const confirmPass = document.getElementById('prof-confirm-pass').value;
+      const newUsername = document.getElementById('prof-username').value;
+      const feedback = document.getElementById('password-feedback');
+      feedback.style.display = 'none';
+
+      if (newPass !== confirmPass) {
+        feedback.textContent = 'New password and confirmation password do not match.';
+        feedback.style.display = 'block';
+        return;
+      }
+
+      try {
+        const res = await apiFetch('/api/auth/password', {
+          method: 'POST',
+          body: JSON.stringify({
+            currentPassword: curPass,
+            newPassword: newPass,
+            confirmPassword: confirmPass,
+            newUsername: newUsername
+          })
+        });
+        setToken(res.token);
+        adminProfile.username = res.username;
+        updateTopbarProfileUi();
+        showToast(res.message || 'Password successfully changed');
+        document.getElementById('profile-password-form').reset();
+        document.getElementById('prof-username').value = res.username;
+      } catch (err) {
+        feedback.textContent = err.message;
+        feedback.style.display = 'block';
+      }
+    });
+  }
+
   const TAB_RENDERERS = {
+    'tab-profile': renderProfileTab,
     'tab-dashboard': renderDashboardTab,
     'tab-inquiries': renderInquiriesTab,
     'tab-sections': renderSectionsOrderTab,
@@ -1418,6 +1750,7 @@
     document.getElementById('admin-app').style.display = 'flex';
     cmsData = await apiFetch('/api/content');
     await loadInquiries();
+    await loadAdminProfile();
 
     const initialHash = window.location.hash.replace('#', '');
     switchTab(TAB_RENDERERS[initialHash] ? initialHash : 'tab-dashboard');
@@ -1429,6 +1762,15 @@
     const sidebar = document.getElementById('avigo-sidebar');
     if (mobBtn && sidebar) {
       mobBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
+    }
+
+    // Topbar profile trigger
+    const topbarProfileBtn = document.getElementById('topbar-profile-trigger');
+    if (topbarProfileBtn) {
+      topbarProfileBtn.addEventListener('click', () => {
+        window.location.hash = 'tab-profile';
+        switchTab('tab-profile');
+      });
     }
 
     // Sidebar tab navigation
@@ -1491,26 +1833,68 @@
       }
     });
 
+    // Password visibility toggle on Auth Gate
+    const togglePassBtn = document.getElementById('toggle-auth-password');
+    const passInput = document.getElementById('login-password');
+    if (togglePassBtn && passInput) {
+      togglePassBtn.addEventListener('click', () => {
+        const isPass = passInput.type === 'password';
+        passInput.type = isPass ? 'text' : 'password';
+        togglePassBtn.innerHTML = isPass ? `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+        ` : `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        `;
+      });
+    }
+
     // Login Form
-    document.getElementById('login-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const errEl = document.getElementById('login-error');
-      errEl.style.display = 'none';
-      try {
-        const res = await apiFetch('/api/auth/login', {
-          method: 'POST',
-          body: JSON.stringify({
-            username: document.getElementById('login-username').value,
-            password: document.getElementById('login-password').value
-          })
-        });
-        setToken(res.token);
-        await bootAdminApp();
-      } catch (err) {
-        errEl.textContent = err.message;
-        errEl.style.display = 'block';
-      }
-    });
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errEl = document.getElementById('login-error');
+        const submitBtn = document.getElementById('login-submit-btn');
+        if (errEl) errEl.style.display = 'none';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `<span>Verifying Credentials...</span>`;
+        }
+        try {
+          const res = await apiFetch('/api/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({
+              username: document.getElementById('login-username').value,
+              password: document.getElementById('login-password').value
+            })
+          });
+          setToken(res.token);
+          await bootAdminApp();
+        } catch (err) {
+          if (errEl) {
+            errEl.textContent = err.message;
+            errEl.style.display = 'block';
+          }
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `
+              <span>Authenticate &amp; Enter Portal</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            `;
+          }
+        }
+      });
+    }
 
     if (getToken()) {
       try {

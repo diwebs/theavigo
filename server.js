@@ -279,8 +279,17 @@ const server = http.createServer(async (req, res) => {
       const inputHash = hashPassword(String(body.password || ''), auth.salt);
       if (String(body.username || '').trim() === auth.username && inputHash === auth.passwordHash) {
         clearAttempts(clientIp);
+        auth.lastLogin = new Date().toISOString();
+        fs.writeFileSync(AUTH_PATH, JSON.stringify(auth, null, 2));
         const token = createToken(auth.username);
-        return sendJson(req, res, 200, { token, username: auth.username, portalPath: PORTAL_ROUTE });
+        return sendJson(req, res, 200, {
+          token,
+          username: auth.username,
+          displayName: auth.displayName || 'Executive Administrator',
+          role: auth.role || 'Super Administrator',
+          avatarUrl: auth.avatarUrl || '/uploads/logo.png',
+          portalPath: PORTAL_ROUTE
+        });
       }
       recordFailedAttempt(clientIp);
       return sendJson(req, res, 401, { error: 'Invalid Avigo Admin credentials.' });
@@ -290,10 +299,65 @@ const server = http.createServer(async (req, res) => {
     if (pathname === '/api/auth/verify' && req.method === 'GET') {
       const user = requireAuth(req, res);
       if (!user) return;
-      return sendJson(req, res, 200, { authenticated: true, username: user.sub, portalPath: PORTAL_ROUTE });
+      const auth = getAuthConfig();
+      return sendJson(req, res, 200, {
+        authenticated: true,
+        username: auth.username,
+        displayName: auth.displayName || 'Executive Administrator',
+        email: auth.email || 'admin@theavigo.com',
+        role: auth.role || 'Super Administrator',
+        phone: auth.phone || '+2349069655238',
+        avatarUrl: auth.avatarUrl || '/uploads/logo.png',
+        lastLogin: auth.lastLogin,
+        portalPath: PORTAL_ROUTE
+      });
     }
 
-    // 3. Auth Change Credentials
+    // 2b. GET Admin Profile
+    if (pathname === '/api/auth/profile' && req.method === 'GET') {
+      const user = requireAuth(req, res);
+      if (!user) return;
+      const auth = getAuthConfig();
+      return sendJson(req, res, 200, {
+        username: auth.username,
+        displayName: auth.displayName || 'Executive Administrator',
+        email: auth.email || 'admin@theavigo.com',
+        role: auth.role || 'Super Administrator',
+        phone: auth.phone || '+2349069655238',
+        avatarUrl: auth.avatarUrl || '/uploads/logo.png',
+        lastLogin: auth.lastLogin,
+        portalPath: PORTAL_ROUTE
+      });
+    }
+
+    // 2c. PUT Admin Profile
+    if (pathname === '/api/auth/profile' && req.method === 'PUT') {
+      const user = requireAuth(req, res);
+      if (!user) return;
+      const body = await readJsonBody(req);
+      const auth = getAuthConfig();
+      if (body.displayName) auth.displayName = String(body.displayName).trim();
+      if (body.email) auth.email = String(body.email).trim();
+      if (body.role) auth.role = String(body.role).trim();
+      if (body.phone) auth.phone = String(body.phone).trim();
+      if (body.avatarUrl) auth.avatarUrl = String(body.avatarUrl).trim();
+      fs.writeFileSync(AUTH_PATH, JSON.stringify(auth, null, 2));
+      return sendJson(req, res, 200, {
+        message: 'Admin profile updated successfully.',
+        profile: {
+          username: auth.username,
+          displayName: auth.displayName,
+          email: auth.email,
+          role: auth.role,
+          phone: auth.phone,
+          avatarUrl: auth.avatarUrl,
+          lastLogin: auth.lastLogin,
+          portalPath: PORTAL_ROUTE
+        }
+      });
+    }
+
+    // 3. Auth Change Credentials / Password
     if (pathname === '/api/auth/password' && req.method === 'POST') {
       const user = requireAuth(req, res);
       if (!user) return;
@@ -306,17 +370,31 @@ const server = http.createServer(async (req, res) => {
       if (!body.newPassword || String(body.newPassword).length < 5) {
         return sendJson(req, res, 400, { error: 'New password must be at least 5 characters.' });
       }
+      if (body.confirmPassword && String(body.newPassword) !== String(body.confirmPassword)) {
+        return sendJson(req, res, 400, { error: 'New password and confirmation do not match.' });
+      }
       const newSalt = crypto.randomBytes(16).toString('hex');
       const newUsername = body.newUsername ? String(body.newUsername).trim() : auth.username;
-      const updatedAuth = {
-        username: newUsername,
-        salt: newSalt,
-        passwordHash: hashPassword(String(body.newPassword), newSalt),
-        secret: auth.secret
-      };
-      fs.writeFileSync(AUTH_PATH, JSON.stringify(updatedAuth, null, 2));
+      auth.username = newUsername;
+      auth.salt = newSalt;
+      auth.passwordHash = hashPassword(String(body.newPassword), newSalt);
+      fs.writeFileSync(AUTH_PATH, JSON.stringify(auth, null, 2));
       const newToken = createToken(newUsername);
-      return sendJson(req, res, 200, { message: 'Avigo Admin credentials updated.', token: newToken, username: newUsername });
+      return sendJson(req, res, 200, {
+        message: 'Admin credentials updated successfully.',
+        token: newToken,
+        username: newUsername
+      });
+    }
+
+    // Health Check Endpoint (Used by Docker, load balancers, and monitoring)
+    if (pathname === '/api/health' && req.method === 'GET') {
+      return sendJson(req, res, 200, {
+        status: 'healthy',
+        service: 'theavigo-engine',
+        uptimeSeconds: Math.floor(process.uptime()),
+        timestamp: new Date().toISOString()
+      });
     }
 
     // 4. GET Public Content (Served from In-Memory RAM Cache)

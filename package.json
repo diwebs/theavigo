@@ -1,11 +1,15 @@
 {
   "name": "theavigo-cms",
   "version": "2.0.0",
-  "description": "Avigo Oil and Gas Integrated Ltd. Corporate Portfolio & Admin Content Management Portal",
+  "description": "Avigo Oil and Gas Integrated Ltd. Corporate Portfolio & Executive Admin Portal",
   "main": "server.js",
+  "author": "Avigo Oil and Gas Integrated Ltd.",
+  "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "start": "node server.js",
-    "extract-assets": "node scripts/extract-pdf-assets.js"
+    "test": "node --check server.js && node --check public/js/site.js && node --check public/js/admin.js",
+    "verify": "node scripts/verify-deployment.js"
   },
   "engines": {
     "node": ">=18.0.0"
